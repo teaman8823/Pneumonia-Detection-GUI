@@ -119,13 +119,40 @@ class ConfusionMatrixTabUI:
         center_frame = ttk.Frame(self.dataset_info_frame)
         center_frame.place(relx=0.5, rely=0.5, anchor='center')
         
-        # Penguin with OK sign emoji
-        penguin_label = ttk.Label(
+        # Draw checkmark and folder icon using Canvas
+        icon_canvas = tk.Canvas(
             center_frame,
-            text="🐧👌",
-            font=(FONTS['system'][0], 64)
+            width=120,
+            height=80,
+            bg=APPLE_COLORS['surface'],
+            highlightthickness=0
         )
-        penguin_label.pack()
+        icon_canvas.pack()
+        
+        # Draw folder icon
+        folder_color = APPLE_COLORS['primary']
+        # Folder body
+        icon_canvas.create_rectangle(
+            20, 40, 80, 70,
+            fill=folder_color,
+            outline=''
+        )
+        # Folder tab
+        icon_canvas.create_polygon(
+            20, 40, 30, 30, 50, 30, 60, 40,
+            fill=folder_color,
+            outline=''
+        )
+        
+        # Draw checkmark
+        check_color = APPLE_COLORS['success']
+        icon_canvas.create_line(
+            65, 45, 75, 55, 95, 35,
+            fill=check_color,
+            width=4,
+            capstyle='round',
+            joinstyle='round'
+        )
         
         # Dataset name
         name_label = ttk.Label(

@@ -52,35 +52,33 @@ class AppleStyleManager:
             darkcolor=APPLE_COLORS['separator']
         )
         
-        # Primary button style - FIXED to maintain blue color
+        # Primary button style - Changed to normal button style
         self.style.configure('ApplePrimary.TButton',
             font=self.get_font(FONTS['body_medium']),
-            foreground='white',
-            background=APPLE_COLORS['primary'],
+            foreground=APPLE_COLORS['text_primary'],
+            background=APPLE_COLORS['surface'],
             focuscolor='none',
-            borderwidth=0,
+            borderwidth=1,
             relief='flat',
             padding=(PADDING['large'], PADDING['small'])
         )
         
-        # Fixed map configuration for primary button - ensure blue stays blue
+        # Primary button map - Normal button behavior
         self.style.map('ApplePrimary.TButton',
             background=[
-                ('disabled', APPLE_COLORS['text_tertiary']),
-                ('pressed', APPLE_COLORS['primary_dark']),
-                ('active', APPLE_COLORS['primary_light']),
-                ('!disabled', APPLE_COLORS['primary'])  # Ensure normal state is primary blue
+                ('disabled', APPLE_COLORS['separator']),
+                ('pressed', APPLE_COLORS['separator']),
+                ('active', APPLE_COLORS['background'])
             ],
             foreground=[
-                ('disabled', APPLE_COLORS['text_secondary']),
-                ('!disabled', 'white')  # Ensure text stays white
+                ('disabled', APPLE_COLORS['text_tertiary'])
             ]
         )
         
         # Secondary button style
         self.style.configure('AppleSecondary.TButton',
             font=self.get_font(FONTS['body_medium']),
-            foreground=APPLE_COLORS['primary'],
+            foreground=APPLE_COLORS['text_primary'],
             background=APPLE_COLORS['surface'],
             focuscolor='none',
             borderwidth=1,
